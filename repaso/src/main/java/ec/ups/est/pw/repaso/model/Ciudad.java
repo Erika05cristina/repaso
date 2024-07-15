@@ -12,14 +12,14 @@ import jakarta.persistence.Table;
 public class Ciudad {
 	
 	@Id
-	private int ci_id;
+	private String ci_id;
 	@Column(name="ci_nombre")
 	private String ci_nombre;
 	
-	public int getCi_id() {
+	public String getCi_id() {
 		return ci_id;
 	}
-	public void setCi_id(int ci_id) {
+	public void setCi_id(String ci_id) {
 		this.ci_id = ci_id;
 	}
 	public String getCi_nombre() {

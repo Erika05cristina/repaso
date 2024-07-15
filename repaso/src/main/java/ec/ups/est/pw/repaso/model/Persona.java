@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 public class Persona {
 	
 	@Id
-	private int per_id;
+	private String per_id;
 	@Column(name="per_cedula")
 	private String per_cedula;
 	@Column(name="per_nombre")
@@ -25,10 +25,10 @@ public class Persona {
 	@JoinColumn(name="fk_Ciudad")
 	private Ciudad ciudad;
 	
-	public int getPer_id() {
+	public String getPer_id() {
 		return per_id;
 	}
-	public void setPer_id(int per_id) {
+	public void setPer_id(String per_id) {
 		this.per_id = per_id;
 	}
 	public String getPer_cedula() {
