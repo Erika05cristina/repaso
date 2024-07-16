@@ -10,14 +10,17 @@ import jakarta.persistence.Query;
 
 @Stateless
 public class CiudadDAO {
+	
 	@PersistenceContext
 	private EntityManager em;
 	
 	public void insert(Ciudad ciudad) {
 		em.persist(ciudad);
 	}
-	public Ciudad read(String cedula) {
-		Ciudad cliente = em.find(Ciudad.class, cedula);
+	
+	//Se le envia la llave primaria
+	public Ciudad read(String codigo) {
+		Ciudad cliente = em.find(Ciudad.class, codigo);
 		return cliente;
 	}
 	
@@ -31,7 +34,7 @@ public class CiudadDAO {
 	}
 	
 	public List<Ciudad> getAll(){
-		String jpql = "SELECT c FROM Cliente c";
+		String jpql = "SELECT c FROM Ciudad c";
 		Query query = em.createQuery(jpql, Ciudad.class);		
 		return query.getResultList();
 	}

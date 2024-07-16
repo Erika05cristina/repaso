@@ -1,6 +1,9 @@
 package ec.ups.est.pw.repaso.bussines;
 
+import java.util.List;
+
 import ec.ups.est.pw.repaso.DAO.PersonaDao;
+import ec.ups.est.pw.repaso.model.Ciudad;
 import ec.ups.est.pw.repaso.model.Persona;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -16,6 +19,10 @@ public class GestioPersona {
 		if(persona == null)
 			throw new Exception("Persona no existe");
 		return persona;
+	}
+	
+	public List<Persona> getPersonas(){
+		return daoPersona.getAll();
 	}
 	
 	public void createPersona(Persona persona) throws Exception {			

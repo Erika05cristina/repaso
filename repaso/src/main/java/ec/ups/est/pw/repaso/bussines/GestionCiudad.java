@@ -1,5 +1,7 @@
 package ec.ups.est.pw.repaso.bussines;
 
+import java.util.List;
+
 import ec.ups.est.pw.repaso.DAO.CiudadDAO;
 import ec.ups.est.pw.repaso.model.Ciudad;
 import jakarta.ejb.Stateless;
@@ -16,6 +18,10 @@ public class GestionCiudad {
 		if(ciudad == null)
 			throw new Exception("ciudad no existe");
 		return ciudad;
+	}
+	
+	public List<Ciudad> getCiudades(){
+		return daociudad.getAll();
 	}
 	
 	public void createCiudad(Ciudad ciudad) throws Exception {			

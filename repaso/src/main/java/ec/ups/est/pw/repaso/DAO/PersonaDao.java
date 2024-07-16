@@ -34,7 +34,7 @@ public class PersonaDao {
 	}
 	
 	public List<Persona> getAll(){
-		String jpql = "SELECT c FROM Cliente c";
+		String jpql = "SELECT p FROM Persona p";
 		Query query = em.createQuery(jpql, Persona.class);		
 		return query.getResultList();
 	}

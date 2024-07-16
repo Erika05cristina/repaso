@@ -1,7 +1,7 @@
 package ec.ups.est.pw.repaso.service;
 
-import java.util.List;
 
+import java.util.List;
 
 import ec.ups.est.pw.repaso.bussines.GestionCiudad;
 import ec.ups.est.pw.repaso.model.Ciudad;
@@ -9,6 +9,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -16,13 +17,21 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/ciudad")
+@Path("/ciudades")
 public class CiudadService {
+	/***
+	    * Solicitudes ejemplo
+		* POST repaso/rs/ciudades/
+		* PUT repaso/rs/ciudades/
+		* DELETE repaso/rs/ciudades/?02120
+		* GET repaso/rs/ciudades/
+		* GET repaso/rs/ciudades/0103870
+		*/
 	
 	@Inject
 	private GestionCiudad gCiudad;
 	
-	@Inject
+	@POST
 	@Produces("application/json")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create (Ciudad ciudad) {
@@ -32,8 +41,7 @@ public class CiudadService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return Response.status(503).entity(new Respuesta(Respuesta.ERROR, "Error en BD")).build();
-			
+			return Response.status(503).entity(new Respuesta(Respuesta.ERROR,"Error bd")).build();
 		}
 	}
 	
@@ -50,11 +58,12 @@ public class CiudadService {
 	    }
 	}
 	
+	
 	@DELETE
-	public Response delete(@QueryParam("id") String cedula) {
+	public Response delete(@QueryParam("id") String codigo) {
 		try {
-			gCiudad.deleteCiudad(cedula);
-			return Response.ok(cedula).build();
+			gCiudad.deleteCiudad(codigo);
+			return Response.ok(codigo).build();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -65,12 +74,12 @@ public class CiudadService {
 	}
 	
 	@GET
-	@Path("/{cedula}")
-	public Ciudad get(String cedula) {
-		Ciudad ciudad;
+	@Path("/{codigo}")
+	public Ciudad get(String codigo) {
+		Ciudad cliente;
 		try {
-			ciudad = gCiudad.getCiudad(cedula);
-			return ciudad;
+			cliente = gCiudad.getCiudad(codigo);
+			return cliente;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -80,8 +89,10 @@ public class CiudadService {
 	@GET
 	@Produces("application/json")
 	public List<Ciudad> list(){
-		List<Ciudad> ciudades = gCiudad.getCiudad();
-		return ciudades;S
+		List<Ciudad> clientes = gCiudad.getCiudades();
+		return clientes;
 	}
-
+	
+	
+	
 }
