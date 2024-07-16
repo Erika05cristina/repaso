@@ -16,14 +16,18 @@ public class Persona {
 	
 	@Id
 	private String per_id;
+	
 	@Column(name="per_cedula")
 	private String per_cedula;
+	
 	@Column(name="per_nombre")
 	private String per_nombre;
 	
+	//Relacion
 	@ManyToOne
 	@JoinColumn(name="fk_Ciudad")
 	private Ciudad ciudad;
+	
 	
 	public String getPer_id() {
 		return per_id;

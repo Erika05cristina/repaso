@@ -19,13 +19,13 @@ public class PersonaDao {
 		em.persist(persona);
 	}
 	
-	public Persona read(String cedula) {
-		Persona persona = em.find(Persona.class, cedula);
+	public Persona read(String codigo) {
+		Persona persona = em.find(Persona.class, codigo);
 		return persona;
 	}
 	
-	public void update(Persona Ciudad) {
-		em.merge(Ciudad);
+	public void update(Persona persona) {
+		em.merge(persona);
 	}
 	
 	public void delete(String codigo) {
