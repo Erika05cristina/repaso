@@ -42,7 +42,7 @@ public class PersonaServices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response update(Persona persona) {
 	    try {
-	    	gPersona.updateCiudad(persona);
+	    	gPersona.updatePersona(persona);
 	        return Response.ok(persona).build();
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -54,7 +54,7 @@ public class PersonaServices {
 	@DELETE
 	public Response delete(@QueryParam("id") String cedula) {
 		try {
-			gPersona.deleteCiudad(cedula);
+			gPersona.deletePersona(cedula);
 			return Response.ok(cedula).build();
 			
 		} catch (Exception e) {

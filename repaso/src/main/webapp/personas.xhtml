@@ -6,15 +6,63 @@
 
 <h:head></h:head> 
 <body> 
+<h1>Registro</h1>
 <h:form>
-	<h:inputText id="codigo" value="#{personas.persona.per_id}"/>
-	<h:inputText id="cedula" value="#{personas.persona.per_cedula}"/>
-	<h:inputText id="nombre" value="#{personas.persona.per_nombre}"/>
-	<h:inputText id="Ciudad" value="#{personas.persona.ciudad.ci_id}"/>
+	<h2>Codigo Persona</h2>
+	<h:inputText id="codigoG" value="#{personas.persona.per_id}"/>
+	<h2>Cedula Persona</h2>
+	<h:inputText id="cedulaG" value="#{personas.persona.per_cedula}"/>
+	<h2>Nombre Persona</h2>
+	<h:inputText id="nombreG" value="#{personas.persona.per_nombre}"/>
+	<h2>Codigo Ciudad de la Persona</h2>
+	<h:inputText id="CiudadG" value="#{personas.persona.ciudad.ci_id}"/>
 	
 	
 	<h:commandButton action="#{personas.guardar()}" value="Guardar"/>
 	
 </h:form>
+
+<h1>Actualizacion</h1>
+	<h:form> 
+		<h2>Codigo Persona</h2>
+		<h:inputText id="codigoA" value="#{personas.id}"></h:inputText>
+		<h2>Cedula Persona</h2>
+		<h:inputText id="cedulaA" value="#{personas.persona.per_cedula}"></h:inputText>
+		<h2>Nombre Persona</h2>
+		<h:inputText id="nombreA" value="#{personas.persona.per_nombre}"></h:inputText>
+		<h2>Codigo Ciudad de la Persona</h2>
+		<h:inputText id="ciudadA" value="#{personas.persona.ciudad.ci_id}"></h:inputText>
+		
+		<h:commandButton action="#{personas.actualizar()}" value="Confirmar"></h:commandButton>
+	</h:form>
+	
+	<h:form>
+		<h:commandButton action="#{personas.verListado()}" value="Ver Lista"></h:commandButton>
+	</h:form>
+	
+	
+	<h1>Listado Personas</h1>
+
+<h:dataTable value="#{personas.listado}" var="persona">
+
+	<h:column>
+		<f:facet name="header">Codigo</f:facet>
+		#{persona.per_id}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Cedula</f:facet>
+		#{persona.per_cedula}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Nombre</f:facet>
+		#{persona.per_nombre}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Ciudad</f:facet>
+		#{persona.ciudad.ci_nombre}
+	</h:column>
+			
+	
+</h:dataTable>
 </body> 
 </html>

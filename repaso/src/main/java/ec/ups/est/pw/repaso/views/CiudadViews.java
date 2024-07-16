@@ -17,6 +17,10 @@ public class CiudadViews {
 	
 	private Ciudad ciudad = new Ciudad();
 	
+
+
+	private String id;
+	
 	private List<Ciudad> listado;
 
 	public GestionCiudad getgCiudades() {
@@ -43,6 +47,14 @@ public class CiudadViews {
 		this.ciudad = ciudad;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@PostConstruct
 	public void init() {
 		listado=gCiudades.getCiudades();
@@ -53,13 +65,43 @@ public class CiudadViews {
 		System.out.println(this.ciudad);
 		
 		try {
-			gCiudades.createCiudad(ciudad);
+			 this.gCiudades.createCiudad(ciudad);
 			return "listaCiudades?faces-redirect=true";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			return "error";
 		}
+	}
+	
+	public String verListado() {
+		return "listaCiudades?faces-redirect=true";
+	}
+	
+	public String elimnar() {
+		
+		try {
+			this.gCiudades.deleteCiudad(id);
+			return "listaCiudades?faces-redirect=true";			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+			
+		}
+	}
+	
+	public String actualizar() {
+		try {
+			this.gCiudades.updateCiudad(ciudad);
+			return "listaCiudades?faces-redirect=true";
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+		
 	}
 
 }

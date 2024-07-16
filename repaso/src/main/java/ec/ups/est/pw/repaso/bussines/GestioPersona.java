@@ -29,7 +29,7 @@ public class GestioPersona {
 		daoPersona.insert(persona);
 	}
 	
-	public void deleteCiudad(String codigo) throws Exception{
+	public void deletePersona(String codigo) throws Exception{
 		Persona persona = daoPersona.read(codigo);
 		if(persona == null) {				
 			throw new Exception("Persona no existe");
@@ -40,7 +40,7 @@ public class GestioPersona {
 		
 	}
 	
-	public void updateCiudad(Persona persona) throws Exception {
+	public void updatePersona(Persona persona) throws Exception {
 		Persona existingCiudad = daoPersona.read(persona.getPer_id());
         if (existingCiudad == null) {
             throw new Exception("Persona no existe");

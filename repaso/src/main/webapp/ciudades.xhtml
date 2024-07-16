@@ -6,12 +6,28 @@
 
 <h:head></h:head> 
 <body> 
+<h1>Registro</h1>
 <h:form>
-	<h:inputText id="codigo" value="#{ciudades.ciudad.ci_id}"/>
-	<h:inputText id="nombre" value="#{ciudades.ciudad.ci_nombre}"/>
+	<h2>Codigo Ciudad </h2>
+	<h:inputText id="codigoG" value="#{ciudades.ciudad.ci_id}"/>
+	<h2>Nombre Ciudad </h2>
+	<h:inputText id="nombreG" value="#{ciudades.ciudad.ci_nombre}"/>
 	
 	<h:commandButton action="#{ciudades.guardar()}" value="Guardar"/>
 	
 </h:form>
+<h1>Actualizacion</h1>
+	<h:form> 
+		<h2>Codigo Ciudad </h2>
+		<h:inputText id="codigo" value="#{ciudades.ciudad.ci_id}"></h:inputText>
+		<h2>Nombre Ciudad </h2>
+		<h:inputText id="nombre" value="#{ciudades.ciudad.ci_nombre}"></h:inputText>
+		
+		<h:commandButton action="#{ciudades.actualizar()}" value="Confirmar"></h:commandButton>
+	</h:form>
+	
+	<h:form>
+		<h:commandButton action="#{ciudades.verListado()}" value="Ver Lista"></h:commandButton>
+	</h:form>
 </body> 
 </html>

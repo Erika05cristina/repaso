@@ -24,5 +24,12 @@
 <h:form>
 	<h:commandButton value="Regresar" action="ciudades.xhtml?faces-redirect-true" />
 </h:form>
+
+<h:form>
+		<h:inputText id="codigo" value="#{ciudades.id}"></h:inputText>
+		
+		<h:commandButton action="#{ciudades.elimnar()}" value="Eliminar"></h:commandButton>
+	</h:form>
+	
 </body> 
 </html>

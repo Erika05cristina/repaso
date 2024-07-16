@@ -30,7 +30,13 @@
 	
 </h:dataTable>
 <h:form>
-	<h:commandButton value="Regresar" action="personas.xhtml?faces-redirect-true" />
+	<h:commandButton value="Regresar" action="#{personas.regresar()}" />
 </h:form>
+
+<h:form>
+		<h:inputText id="codigo" value="#{personas.id}"></h:inputText>
+		
+		<h:commandButton action="#{personas.eliminar()}" value="Eliminar"></h:commandButton>
+	</h:form>
 </body> 
 </html>

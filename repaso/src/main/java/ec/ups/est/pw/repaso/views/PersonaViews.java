@@ -19,6 +19,16 @@ public class PersonaViews {
 	
 	private Persona persona = new Persona();
 	
+	private String id; 
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	private List<Persona> listado;
 
 	public GestioPersona getgPersonas() {
@@ -45,17 +55,11 @@ public class PersonaViews {
 		this.listado = listado;
 	}
 	
-	@PostConstruct
-	public void init() {
-		listado=gPersonas.getPersonas();
-		persona.setCiudad(new Ciudad());
-	}
-	
 	public String guardar() {
 		System.out.println(this.persona);
 		
 		try {
-			gPersonas.createPersona(persona);
+			this.gPersonas.createPersona(persona);
 			return "listaPersonas?faces-redirect=true";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -63,7 +67,49 @@ public class PersonaViews {
 			return "error";
 		}
 	}
-
+	
+	public String eliminar() {
+		try {
+			this.gPersonas.deletePersona(id);
+			return "listaPersonas?faces-redirect=true";			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	
+	public String actualizar() {
+		try {
+			Persona personaActualizada = gPersonas.getPersona(id);
+        personaActualizada.setPer_cedula(persona.getPer_cedula());
+        personaActualizada.setPer_nombre(persona.getPer_nombre());
+        personaActualizada.setCiudad(persona.getCiudad());
+        gPersonas.updatePersona(personaActualizada);
+        return "listaPersonas?faces-redirect=true";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+		
+	}
+	
+	public String verListado() {
+		return "listaPersonas?faces-redirect=true";
+	}
+	
+	public String regresar() {
+		return "personas?faces-redirect=true";
+	}
+	
+	@PostConstruct
+	public void init() {
+		listado=gPersonas.getPersonas();
+		persona.setCiudad(new Ciudad());
+	}
+	
+	
 }
 	
 	
